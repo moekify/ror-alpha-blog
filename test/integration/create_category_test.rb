@@ -3,6 +3,7 @@ require 'test_helper'
 class CreateCategoryTest < ActionDispatch::IntegrationTest
   def setup
     @user = User.create(username: "John", email: "john@example.com", password: "password", admin: true)
+    @category = Category.create(name: "Test")
   end
 
   test "get new category form and create category" do
@@ -28,5 +29,4 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
     assert_select 'h2.card-title'
     assert_select 'div.card-body'
   end
-
 end

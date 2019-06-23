@@ -22,6 +22,12 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get edit" do
+    sign_in_as(@user, "password")
+    get edit_category_path(@category)
+    assert_response :success
+  end
+
   test "should redirect create when admin not logged in" do
     assert_no_difference 'Category.count' do
       post categories_path, params: {category: {name: "sports"}}
